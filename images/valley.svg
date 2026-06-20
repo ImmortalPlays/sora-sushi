@@ -96,27 +96,49 @@
 
   <g opacity="0.6">
     <g stroke="#3a2f28" fill="none" stroke-linecap="round" filter="url(#brushFine)">
-      <path d="M64,20 C 24,170 168,300 96,470 C 34,628 176,792 104,968 C 44,1130 168,1300 116,1500" stroke-width="9"/>
+      <path d="M64,20 C 24,170 168,300 96,470 C 34,628 176,792 104,968 C 44,1130 168,1300 116,1500 C 64,1664 178,1828 112,2000 C 52,2166 174,2336 120,2520 C 78,2682 158,2812 128,2950" stroke-width="9"/>
       <path d="M120,300 C 180,280 210,330 250,320" stroke-width="4.5"/>
       <path d="M96,640 C 40,650 16,700 -8,700" stroke-width="4.5"/>
       <path d="M150,980 C 210,990 236,1050 250,1090" stroke-width="4.5"/>
       <path d="M110,1300 C 60,1320 40,1380 18,1400" stroke-width="4"/>
+      <path d="M112,2000 C 176,2012 206,2068 248,2060" stroke-width="4.5"/>
+      <path d="M120,2520 C 62,2536 38,2596 14,2612" stroke-width="4"/>
+      <path d="M122,2760 C 182,2772 210,2828 248,2824" stroke-width="4"/>
     </g>
     <g fill="#e7aebd" filter="url(#brushFine)">
       <use href="#blossom" transform="translate(60 40) scale(1.1)"/>
       <use href="#blossom" transform="translate(120 150)"/>
+      <use href="#blossom" transform="translate(96 240) scale(0.9)"/>
       <use href="#blossom" transform="translate(250 318) scale(1.1)"/>
       <use href="#blossom" transform="translate(210 300) scale(0.9)"/>
       <use href="#blossom" transform="translate(150 470) scale(1.05)"/>
-      <use href="#blossom" transform="translate(-8 698) scale(1.1)"/>
+      <use href="#blossom" transform="translate(92 560) scale(0.9)"/>
       <use href="#blossom" transform="translate(40 650)"/>
+      <use href="#blossom" transform="translate(-8 698) scale(1.1)"/>
       <use href="#blossom" transform="translate(96 820) scale(1.05)"/>
-      <use href="#blossom" transform="translate(250 1088) scale(1.1)"/>
+      <use href="#blossom" transform="translate(150 900) scale(0.9)"/>
       <use href="#blossom" transform="translate(210 1030) scale(0.9)"/>
+      <use href="#blossom" transform="translate(250 1088) scale(1.1)"/>
       <use href="#blossom" transform="translate(120 1160)"/>
-      <use href="#blossom" transform="translate(18 1398) scale(1.05)"/>
+      <use href="#blossom" transform="translate(60 1240) scale(0.9)"/>
       <use href="#blossom" transform="translate(70 1320) scale(0.9)"/>
+      <use href="#blossom" transform="translate(18 1398) scale(1.05)"/>
       <use href="#blossom" transform="translate(116 1500) scale(1.05)"/>
+      <use href="#blossom" transform="translate(170 1664) scale(0.95)"/>
+      <use href="#blossom" transform="translate(110 1828) scale(1.05)"/>
+      <use href="#blossom" transform="translate(60 1920) scale(0.9)"/>
+      <use href="#blossom" transform="translate(176 2008) scale(0.95)"/>
+      <use href="#blossom" transform="translate(248 2058) scale(1.05)"/>
+      <use href="#blossom" transform="translate(150 2166) scale(0.95)"/>
+      <use href="#blossom" transform="translate(118 2336) scale(1.05)"/>
+      <use href="#blossom" transform="translate(60 2440) scale(0.9)"/>
+      <use href="#blossom" transform="translate(14 2610) scale(1.05)"/>
+      <use href="#blossom" transform="translate(120 2520) scale(0.95)"/>
+      <use href="#blossom" transform="translate(158 2682) scale(0.95)"/>
+      <use href="#blossom" transform="translate(248 2822) scale(1.05)"/>
+      <use href="#blossom" transform="translate(200 2760) scale(0.9)"/>
+      <use href="#blossom" transform="translate(128 2860) scale(1)"/>
+      <use href="#blossom" transform="translate(128 2950) scale(1.05)"/>
     </g>
   </g>
 
