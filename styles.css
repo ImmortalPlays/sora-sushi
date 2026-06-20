@@ -192,12 +192,14 @@ code {
 #menu::after,  #about::after,  #gallery::after,  #visit::after,  .footer::after {
   content: "";
   position: absolute;
-  top: 0;
+  /* start 1px above the section to cover the sub-pixel gap between blocks
+     (the wedge colour matches the block above, so the overlap is invisible) */
+  top: -1px;
   /* full-bleed across the viewport, even when the section is max-width'd */
   left: 50%;
   width: 100vw;
   margin-left: -50vw;
-  height: 100px;
+  height: 101px;
   pointer-events: none;
   z-index: 0;
 }
