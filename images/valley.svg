@@ -41,7 +41,7 @@
     </filter>
     <filter id="brushFine" x="-25%" y="-25%" width="150%" height="150%">
       <feTurbulence type="fractalNoise" baseFrequency="0.028 0.045" numOctaves="2" seed="4" result="n"/>
-      <feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="12" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
     <filter id="soft"><feGaussianBlur stdDeviation="6"/></filter>
 
@@ -77,6 +77,15 @@
       <circle cx="6" cy="-3" r="3.6"/><circle cx="-6" cy="-3" r="3.6"/>
       <circle cx="0" cy="0" r="2.1" fill="#bd647c"/>
     </g>
+
+    <path id="bleaf" d="M0,0 Q10,-36 2,-74 Q-8,-36 0,0 Z"/>
+    <g id="bspray">
+      <use href="#bleaf" transform="rotate(-40) scale(1.05)"/>
+      <use href="#bleaf" transform="rotate(-18)"/>
+      <use href="#bleaf" transform="rotate(4)"/>
+      <use href="#bleaf" transform="rotate(26) scale(0.95)"/>
+      <use href="#bleaf" transform="rotate(50) scale(0.8)"/>
+    </g>
   </defs>
 
   <rect x="0" y="0" width="1000" height="4000" fill="url(#sky)"/>
@@ -85,31 +94,35 @@
   <circle cx="720" cy="360" r="190" fill="url(#sunCore)"/>
   <text x="720" y="430" text-anchor="middle" font-family="'Yuji Syuku','Hiragino Mincho ProN','Yu Mincho',serif" font-size="210" fill="#f4ecd6" opacity="0.82">空</text>
 
-  <g opacity="0.62">
+  <g opacity="0.6">
     <g stroke="#3a2f28" fill="none" stroke-linecap="round" filter="url(#brushFine)">
-      <path d="M-30,70 C 90,40 200,150 300,120" stroke-width="9"/>
-      <path d="M150,96 C 200,60 250,70 300,40" stroke-width="5"/>
-      <path d="M250,128 C 300,150 330,210 320,250" stroke-width="5"/>
-      <path d="M70,58 C 90,30 120,20 150,8" stroke-width="4"/>
+      <path d="M64,20 C 24,170 168,300 96,470 C 34,628 176,792 104,968 C 44,1130 168,1300 116,1500" stroke-width="9"/>
+      <path d="M120,300 C 180,280 210,330 250,320" stroke-width="4.5"/>
+      <path d="M96,640 C 40,650 16,700 -8,700" stroke-width="4.5"/>
+      <path d="M150,980 C 210,990 236,1050 250,1090" stroke-width="4.5"/>
+      <path d="M110,1300 C 60,1320 40,1380 18,1400" stroke-width="4"/>
     </g>
     <g fill="#e7aebd" filter="url(#brushFine)">
-      <use href="#blossom" transform="translate(-18 66) scale(1.1)"/>
-      <use href="#blossom" transform="translate(40 52)"/>
-      <use href="#blossom" transform="translate(96 70) scale(1.15)"/>
-      <use href="#blossom" transform="translate(150 8) scale(0.9)"/>
-      <use href="#blossom" transform="translate(132 96)"/>
-      <use href="#blossom" transform="translate(196 120) scale(1.1)"/>
-      <use href="#blossom" transform="translate(250 70) scale(0.95)"/>
-      <use href="#blossom" transform="translate(298 38) scale(1.05)"/>
-      <use href="#blossom" transform="translate(300 120)"/>
-      <use href="#blossom" transform="translate(322 196) scale(0.9)"/>
-      <use href="#blossom" transform="translate(316 248) scale(0.85)"/>
+      <use href="#blossom" transform="translate(60 40) scale(1.1)"/>
+      <use href="#blossom" transform="translate(120 150)"/>
+      <use href="#blossom" transform="translate(250 318) scale(1.1)"/>
+      <use href="#blossom" transform="translate(210 300) scale(0.9)"/>
+      <use href="#blossom" transform="translate(150 470) scale(1.05)"/>
+      <use href="#blossom" transform="translate(-8 698) scale(1.1)"/>
+      <use href="#blossom" transform="translate(40 650)"/>
+      <use href="#blossom" transform="translate(96 820) scale(1.05)"/>
+      <use href="#blossom" transform="translate(250 1088) scale(1.1)"/>
+      <use href="#blossom" transform="translate(210 1030) scale(0.9)"/>
+      <use href="#blossom" transform="translate(120 1160)"/>
+      <use href="#blossom" transform="translate(18 1398) scale(1.05)"/>
+      <use href="#blossom" transform="translate(70 1320) scale(0.9)"/>
+      <use href="#blossom" transform="translate(116 1500) scale(1.05)"/>
     </g>
   </g>
 
-  <g stroke="#2b3137" stroke-width="3" fill="none" opacity="0.36" stroke-linecap="round" filter="url(#brushFine)">
-    <path d="M470,520 q22,-18 44,0 q22,-18 44,0"/>
-    <path d="M545,470 q18,-15 36,0 q18,-15 36,0"/>
+  <g stroke="#2b3137" stroke-width="3" fill="none" opacity="0.34" stroke-linecap="round" filter="url(#brushFine)">
+    <path d="M470,560 q22,-18 44,0 q22,-18 44,0"/>
+    <path d="M545,512 q18,-15 36,0 q18,-15 36,0"/>
   </g>
 
   <path d="M0,940 L120,810 L240,890 L380,740 L520,850 L680,720 L820,830 L1000,740 L1000,1360 L0,1360 Z" fill="url(#ink1)" filter="url(#brush)"/>
@@ -118,32 +131,36 @@
   <path d="M0,1540 L150,1320 L300,1450 L430,1140 L520,1320 L660,1180 L800,1360 L920,1260 L1000,1340 L1000,2080 L0,2080 Z" fill="url(#ink2)" filter="url(#brush)"/>
   <rect x="0" y="1540" width="1000" height="360" fill="url(#mist)" opacity="0.82" filter="url(#soft)"/>
 
-  <use href="#temple" transform="translate(470 1880) scale(1.15)" opacity="0.5" filter="url(#brushFine)"/>
+  <use href="#temple" transform="translate(440 1880) scale(1.15)" opacity="0.5" filter="url(#brushFine)"/>
   <g fill="#b5602a" opacity="0.46" filter="url(#brushFine)">
-    <circle cx="392" cy="1900" r="13"/><circle cx="408" cy="1888" r="10"/><circle cx="378" cy="1890" r="9"/>
-    <circle cx="612" cy="1910" r="12"/><circle cx="628" cy="1900" r="9"/>
+    <circle cx="362" cy="1900" r="13"/><circle cx="378" cy="1888" r="10"/><circle cx="348" cy="1890" r="9"/>
+    <circle cx="582" cy="1910" r="12"/><circle cx="598" cy="1900" r="9"/>
+  </g>
+
+  <g opacity="0.42" filter="url(#brushFine)">
+    <g stroke="#20262a" fill="none" stroke-linecap="round">
+      <path d="M884,2760 C 876,2380 888,1980 882,1500" stroke-width="11"/>
+      <path d="M936,2800 C 930,2450 940,2060 936,1640" stroke-width="9"/>
+      <path d="M968,2780 C 964,2520 970,2240 968,1900" stroke-width="7"/>
+      <path d="M872,2560 h24 M874,2300 h24 M876,2040 h22 M878,1780 h20 M880,1560 h18" stroke-width="3"/>
+      <path d="M928,2580 h20 M930,2320 h20 M932,2080 h18 M934,1840 h16 M935,1680 h14" stroke-width="3"/>
+      <path d="M960,2520 h16 M962,2280 h16 M964,2060 h14 M966,1940 h12" stroke-width="3"/>
+    </g>
+    <g fill="#20262a">
+      <use href="#bspray" transform="translate(882 1500) scale(1.2)"/>
+      <use href="#bspray" transform="translate(936 1640) scale(1.05) rotate(12)"/>
+      <use href="#bspray" transform="translate(968 1900) scale(0.9) rotate(-10)"/>
+      <use href="#bspray" transform="translate(900 1980) scale(0.95) rotate(20)"/>
+      <use href="#bspray" transform="translate(948 2240) scale(0.85) rotate(-8)"/>
+      <use href="#bspray" transform="translate(888 2360) scale(0.8) rotate(28)"/>
+    </g>
   </g>
 
   <path d="M0,2440 L140,2100 L320,2320 L500,1980 L680,2280 L860,2040 L1000,2240 L1000,3080 L0,3080 Z" fill="url(#ink3)" filter="url(#brush)"/>
   <rect x="0" y="2360" width="1000" height="300" fill="url(#mist)" opacity="0.5" filter="url(#soft)"/>
 
-  <g opacity="0.5" filter="url(#brushFine)">
-    <path d="M560,2560 C 556,2510 564,2470 560,2430" stroke="#3a2f28" stroke-width="7" fill="none" stroke-linecap="round"/>
-    <path d="M560,2470 C 540,2450 524,2452 510,2440 M560,2456 C 582,2440 600,2444 614,2432" stroke="#3a2f28" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-    <g fill="#e7aebd">
-      <use href="#blossom" transform="translate(512 2436) scale(1.1)"/>
-      <use href="#blossom" transform="translate(536 2420)"/>
-      <use href="#blossom" transform="translate(560 2412) scale(1.2)"/>
-      <use href="#blossom" transform="translate(586 2420)"/>
-      <use href="#blossom" transform="translate(612 2430) scale(1.1)"/>
-      <use href="#blossom" transform="translate(548 2440) scale(0.9)"/>
-      <use href="#blossom" transform="translate(576 2438) scale(0.9)"/>
-    </g>
-  </g>
-
   <use href="#pine" transform="translate(150 2490) scale(1.05)" opacity="0.46" filter="url(#brushFine)"/>
   <use href="#pine" transform="translate(232 2540) scale(0.82)" opacity="0.42" filter="url(#brushFine)"/>
-  <use href="#pine" transform="translate(858 2520) scale(0.98)" opacity="0.44" filter="url(#brushFine)"/>
 
   <g stroke="#6e828f" stroke-width="4" fill="none" opacity="0.18" stroke-linecap="round" filter="url(#brushFine)">
     <path d="M120,3180 q60,-24 120,0 t120,0 t120,0"/>
