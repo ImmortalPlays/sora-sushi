@@ -16,6 +16,9 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* The valley backdrop belongs to the Classic style only. */
+.valley { display: none; }
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -116,18 +119,6 @@ code {
   transition: background 0.2s ease, color 0.2s ease;
 }
 .nav__cart:hover { background: var(--red); color: #fff; }
-.nav__cart-count {
-  background: var(--red);
-  color: #fff;
-  border-radius: 999px;
-  min-width: 1.4rem;
-  height: 1.4rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  padding: 0 0.3rem;
-}
 
 /* ===== Hero (white block) ===== */
 .hero {

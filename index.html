@@ -8,9 +8,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css" id="themeCss" />
+  <script>
+    /* Dev-only style switch. Apply the chosen style before paint (no flash).
+       A ?style= URL param wins, otherwise the saved choice is used. */
+    (function () {
+      try {
+        var p = new URLSearchParams(location.search).get('style');
+        var s = (p === 'modern' || p === 'traditional') ? p : localStorage.getItem('soraStyle');
+        if (s === 'traditional') {
+          document.getElementById('themeCss').href = 'styles-traditional.css';
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
+
+  <!-- Faint full-page background (Classic style only) -->
+  <div class="valley" aria-hidden="true"></div>
 
   <!-- ===== Navigation ===== -->
   <header class="nav" id="top">
