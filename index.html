@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sora Sushi — Modern Japanese Dining</title>
+  <meta name="description" content="Sora Sushi — fresh, modern Japanese cuisine. Sushi, sashimi, and ramen crafted daily." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== Navigation ===== -->
+  <header class="nav" id="top">
+    <a href="#top" class="nav__logo">空 <span>Sora Sushi</span></a>
+    <nav class="nav__links">
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <button class="nav__cart" id="cartButton" aria-label="Open cart">
+      Cart <span class="nav__cart-count" id="cartCount">0</span>
+    </button>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Modern Japanese Dining</p>
+      <h1 class="hero__title">Crafted fresh,<br />served with intention.</h1>
+      <p class="hero__sub">Sushi, sashimi, and ramen made daily from the day's finest catch.</p>
+      <div class="hero__actions">
+        <a href="#menu" class="btn btn--primary">View Menu</a>
+        <a href="#visit" class="btn btn--ghost">Find Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Menu ===== -->
+  <section class="section" id="menu">
+    <div class="section__head">
+      <p class="eyebrow">Our Menu</p>
+      <h2>Today's Selection</h2>
+      <p class="section__lead">Tap "Add" to build your order. Everything is prepared to order by our chefs.</p>
+    </div>
+
+    <!-- Menu items are rendered here by script.js -->
+    <div class="menu" id="menuGrid"></div>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section class="section section--split" id="about">
+    <div class="split__media" aria-hidden="true">
+      <div class="ph ph--about"><span>Chef at the pass</span></div>
+    </div>
+    <div class="split__body">
+      <p class="eyebrow">Our Story</p>
+      <h2>A quiet devotion to the craft</h2>
+      <p>Sora Sushi began with a simple belief: that great sushi is equal parts patience, respect for the ingredient, and the calm of a steady hand. Our chefs train for years before they ever stand at our counter.</p>
+      <p>We source our fish daily and shape every piece by hand. Sit at the counter and watch the craft up close, or settle into a quiet table — either way, you're our guest.</p>
+      <div class="stats">
+        <div class="stat"><strong>15+</strong><span>years at the counter</span></div>
+        <div class="stat"><strong>Daily</strong><span>market-fresh catch</span></div>
+        <div class="stat"><strong>100%</strong><span>hand-shaped</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Gallery ===== -->
+  <section class="section" id="gallery">
+    <div class="section__head">
+      <p class="eyebrow">Gallery</p>
+      <h2>A Look Inside</h2>
+      <p class="section__lead">Swap these tiles for your own photos by dropping images into the <code>images/</code> folder.</p>
+    </div>
+    <div class="gallery">
+      <div class="ph ph--g1"><span>Nigiri platter</span></div>
+      <div class="ph ph--g2"><span>The counter</span></div>
+      <div class="ph ph--g3"><span>Fresh sashimi</span></div>
+      <div class="ph ph--g4"><span>Ramen bowl</span></div>
+      <div class="ph ph--g5"><span>Dining room</span></div>
+      <div class="ph ph--g6"><span>Sake selection</span></div>
+    </div>
+  </section>
+
+  <!-- ===== Visit / Hours & Location ===== -->
+  <section class="section section--dark" id="visit">
+    <div class="visit">
+      <div class="visit__col">
+        <p class="eyebrow eyebrow--light">Hours</p>
+        <h2>When we're open</h2>
+        <ul class="hours">
+          <li><span>Monday</span><span>Closed</span></li>
+          <li><span>Tue – Thu</span><span>5:00 – 10:00 pm</span></li>
+          <li><span>Fri – Sat</span><span>5:00 – 11:30 pm</span></li>
+          <li><span>Sunday</span><span>4:00 – 9:00 pm</span></li>
+        </ul>
+      </div>
+      <div class="visit__col">
+        <p class="eyebrow eyebrow--light">Find Us</p>
+        <h2>Location</h2>
+        <p class="visit__addr">128 Lantern Street<br />Riverside, CA 92501</p>
+        <p class="visit__addr"><a href="tel:+19515550199">(951) 555-0199</a><br /><a href="mailto:hello@sorasushi.example">hello@sorasushi.example</a></p>
+        <a href="#menu" class="btn btn--primary">Start an Order</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <p>空 Sora Sushi</p>
+    <p class="footer__fine">Sample site · Built for demonstration</p>
+  </footer>
+
+  <!-- ===== Cart drawer ===== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart" id="cartDrawer" aria-label="Your order">
+    <div class="cart__head">
+      <h3>Your Order</h3>
+      <button class="cart__close" id="cartClose" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart__items" id="cartItems"></div>
+    <div class="cart__foot">
+      <div class="cart__total">
+        <span>Total</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+      <button class="btn btn--primary btn--block" id="checkoutBtn" disabled>Checkout</button>
+      <p class="cart__note">Demo checkout — no payment is processed.</p>
+    </div>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
