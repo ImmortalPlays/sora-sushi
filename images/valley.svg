@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 4000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#efe5cd" stop-opacity="0"/>
+      <stop offset="0.42" stop-color="#dcd2ba" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#c7bd9c" stop-opacity="0.38"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#b23a26" stop-opacity="0.5"/>
+      <stop offset="0.55" stop-color="#b23a26" stop-opacity="0.34"/>
+      <stop offset="0.8" stop-color="#b23a26" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#b23a26" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sunCore" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#b8402a" stop-opacity="0.62"/>
+      <stop offset="0.78" stop-color="#b23a26" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#b23a26" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mist" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f1ead4" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#f1ead4" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#f1ead4" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ink1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7b8f9c" stop-opacity="0"/>
+      <stop offset="1" stop-color="#6e828f" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="ink2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#566a76" stop-opacity="0.02"/>
+      <stop offset="1" stop-color="#485a66" stop-opacity="0.28"/>
+    </linearGradient>
+    <linearGradient id="ink3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#33424a" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#283238" stop-opacity="0.42"/>
+    </linearGradient>
+
+    <filter id="brush" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.010 0.022" numOctaves="3" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="44" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="3.5"/>
+    </filter>
+    <filter id="brushFine" x="-25%" y="-25%" width="150%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028 0.045" numOctaves="2" seed="4" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="12" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="6"/></filter>
+
+    <g id="pine">
+      <path d="M0,0 C -5,-46 5,-92 1,-156" stroke="#232b2f" stroke-width="6" fill="none"/>
+      <path d="M-48,-58 Q0,-80 48,-58 Q0,-48 -48,-58 Z" fill="#232b2f"/>
+      <path d="M-40,-96 Q0,-116 40,-96 Q0,-86 -40,-96 Z" fill="#232b2f"/>
+      <path d="M-29,-130 Q0,-146 29,-130 Q0,-121 -29,-130 Z" fill="#232b2f"/>
+      <path d="M-17,-156 Q0,-167 17,-156 Q0,-149 -17,-156 Z" fill="#232b2f"/>
+    </g>
+
+    <g id="temple" fill="#2a3338">
+      <rect x="-32" y="-24" width="64" height="24"/>
+      <path d="M-46,-24 Q0,-33 46,-24 L36,-37 Q0,-44 -36,-37 Z"/>
+      <rect x="-58" y="-14" width="26" height="14"/>
+      <path d="M-66,-14 Q-45,-21 -24,-14 L-30,-24 Q-45,-29 -60,-24 Z"/>
+      <g transform="translate(50 2)">
+        <rect x="-9" y="-50" width="18" height="50"/>
+        <path d="M-20,-50 Q0,-55 20,-50 L13,-59 Q0,-63 -13,-59 Z"/>
+        <path d="M-16,-67 Q0,-72 16,-67 L10,-75 Q0,-78 -10,-75 Z"/>
+        <path d="M-12,-83 Q0,-87 12,-83 L7,-90 Q0,-93 -7,-90 Z"/>
+      </g>
+    </g>
+
+    <g id="boat" fill="none" stroke="#283238" stroke-width="4.5" stroke-linecap="round">
+      <path d="M-36,0 Q0,15 36,0"/>
+      <path d="M2,-1 L2,-26"/>
+      <path d="M-20,-3 Q-8,-16 6,-12"/>
+    </g>
+
+    <g id="blossom">
+      <circle cx="0" cy="-5" r="4.4"/><circle cx="4.5" cy="2" r="4.4"/><circle cx="-4.5" cy="2" r="4.4"/>
+      <circle cx="6" cy="-3" r="3.6"/><circle cx="-6" cy="-3" r="3.6"/>
+      <circle cx="0" cy="0" r="2.1" fill="#bd647c"/>
+    </g>
+
+    <path id="bleaf" d="M0,0 Q10,-36 2,-74 Q-8,-36 0,0 Z"/>
+    <g id="bspray">
+      <use href="#bleaf" transform="rotate(-40) scale(1.05)"/>
+      <use href="#bleaf" transform="rotate(-18)"/>
+      <use href="#bleaf" transform="rotate(4)"/>
+      <use href="#bleaf" transform="rotate(26) scale(0.95)"/>
+      <use href="#bleaf" transform="rotate(50) scale(0.8)"/>
+    </g>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="4000" fill="url(#sky)"/>
+
+  <circle cx="720" cy="360" r="270" fill="url(#sunGlow)"/>
+  <circle cx="720" cy="360" r="190" fill="url(#sunCore)"/>
+  <text x="720" y="430" text-anchor="middle" font-family="'Yuji Syuku','Hiragino Mincho ProN','Yu Mincho',serif" font-size="210" fill="#f4ecd6" opacity="0.82">空</text>
+
+  <g opacity="0.6">
+    <g stroke="#3a2f28" fill="none" stroke-linecap="round" filter="url(#brushFine)">
+      <path d="M64,20 C 24,170 168,300 96,470 C 34,628 176,792 104,968 C 44,1130 168,1300 116,1500 C 64,1664 178,1828 112,2000 C 52,2166 174,2336 120,2520 C 78,2682 158,2812 128,2950" stroke-width="9"/>
+      <path d="M120,300 C 180,280 210,330 250,320" stroke-width="4.5"/>
+      <path d="M96,640 C 40,650 16,700 -8,700" stroke-width="4.5"/>
+      <path d="M150,980 C 210,990 236,1050 250,1090" stroke-width="4.5"/>
+      <path d="M110,1300 C 60,1320 40,1380 18,1400" stroke-width="4"/>
+      <path d="M112,2000 C 176,2012 206,2068 248,2060" stroke-width="4.5"/>
+      <path d="M120,2520 C 62,2536 38,2596 14,2612" stroke-width="4"/>
+      <path d="M122,2760 C 182,2772 210,2828 248,2824" stroke-width="4"/>
+    </g>
+    <g fill="#e7aebd" filter="url(#brushFine)">
+      <use href="#blossom" transform="translate(60 40) scale(1.1)"/>
+      <use href="#blossom" transform="translate(120 150)"/>
+      <use href="#blossom" transform="translate(96 240) scale(0.9)"/>
+      <use href="#blossom" transform="translate(250 318) scale(1.1)"/>
+      <use href="#blossom" transform="translate(210 300) scale(0.9)"/>
+      <use href="#blossom" transform="translate(150 470) scale(1.05)"/>
+      <use href="#blossom" transform="translate(92 560) scale(0.9)"/>
+      <use href="#blossom" transform="translate(40 650)"/>
+      <use href="#blossom" transform="translate(-8 698) scale(1.1)"/>
+      <use href="#blossom" transform="translate(96 820) scale(1.05)"/>
+      <use href="#blossom" transform="translate(150 900) scale(0.9)"/>
+      <use href="#blossom" transform="translate(210 1030) scale(0.9)"/>
+      <use href="#blossom" transform="translate(250 1088) scale(1.1)"/>
+      <use href="#blossom" transform="translate(120 1160)"/>
+      <use href="#blossom" transform="translate(60 1240) scale(0.9)"/>
+      <use href="#blossom" transform="translate(70 1320) scale(0.9)"/>
+      <use href="#blossom" transform="translate(18 1398) scale(1.05)"/>
+      <use href="#blossom" transform="translate(116 1500) scale(1.05)"/>
+      <use href="#blossom" transform="translate(170 1664) scale(0.95)"/>
+      <use href="#blossom" transform="translate(110 1828) scale(1.05)"/>
+      <use href="#blossom" transform="translate(60 1920) scale(0.9)"/>
+      <use href="#blossom" transform="translate(176 2008) scale(0.95)"/>
+      <use href="#blossom" transform="translate(248 2058) scale(1.05)"/>
+      <use href="#blossom" transform="translate(150 2166) scale(0.95)"/>
+      <use href="#blossom" transform="translate(118 2336) scale(1.05)"/>
+      <use href="#blossom" transform="translate(60 2440) scale(0.9)"/>
+      <use href="#blossom" transform="translate(14 2610) scale(1.05)"/>
+      <use href="#blossom" transform="translate(120 2520) scale(0.95)"/>
+      <use href="#blossom" transform="translate(158 2682) scale(0.95)"/>
+      <use href="#blossom" transform="translate(248 2822) scale(1.05)"/>
+      <use href="#blossom" transform="translate(200 2760) scale(0.9)"/>
+      <use href="#blossom" transform="translate(128 2860) scale(1)"/>
+      <use href="#blossom" transform="translate(128 2950) scale(1.05)"/>
+    </g>
+  </g>
+
+  <g stroke="#2b3137" stroke-width="3" fill="none" opacity="0.34" stroke-linecap="round" filter="url(#brushFine)">
+    <path d="M470,560 q22,-18 44,0 q22,-18 44,0"/>
+    <path d="M545,512 q18,-15 36,0 q18,-15 36,0"/>
+  </g>
+
+  <path d="M0,940 L120,810 L240,890 L380,740 L520,850 L680,720 L820,830 L1000,740 L1000,1360 L0,1360 Z" fill="url(#ink1)" filter="url(#brush)"/>
+  <rect x="0" y="900" width="1000" height="340" fill="url(#mist)" opacity="0.9" filter="url(#soft)"/>
+
+  <path d="M0,1540 L150,1320 L300,1450 L430,1140 L520,1320 L660,1180 L800,1360 L920,1260 L1000,1340 L1000,2080 L0,2080 Z" fill="url(#ink2)" filter="url(#brush)"/>
+  <rect x="0" y="1540" width="1000" height="360" fill="url(#mist)" opacity="0.82" filter="url(#soft)"/>
+
+  <use href="#temple" transform="translate(440 1880) scale(1.15)" opacity="0.5" filter="url(#brushFine)"/>
+  <g fill="#b5602a" opacity="0.46" filter="url(#brushFine)">
+    <circle cx="362" cy="1900" r="13"/><circle cx="378" cy="1888" r="10"/><circle cx="348" cy="1890" r="9"/>
+    <circle cx="582" cy="1910" r="12"/><circle cx="598" cy="1900" r="9"/>
+  </g>
+
+  <g opacity="0.42" filter="url(#brushFine)">
+    <g stroke="#20262a" fill="none" stroke-linecap="round">
+      <path d="M884,2760 C 876,2380 888,1980 882,1500" stroke-width="11"/>
+      <path d="M936,2800 C 930,2450 940,2060 936,1640" stroke-width="9"/>
+      <path d="M968,2780 C 964,2520 970,2240 968,1900" stroke-width="7"/>
+      <path d="M872,2560 h24 M874,2300 h24 M876,2040 h22 M878,1780 h20 M880,1560 h18" stroke-width="3"/>
+      <path d="M928,2580 h20 M930,2320 h20 M932,2080 h18 M934,1840 h16 M935,1680 h14" stroke-width="3"/>
+      <path d="M960,2520 h16 M962,2280 h16 M964,2060 h14 M966,1940 h12" stroke-width="3"/>
+    </g>
+    <g fill="#20262a">
+      <use href="#bspray" transform="translate(882 1500) scale(1.2)"/>
+      <use href="#bspray" transform="translate(936 1640) scale(1.05) rotate(12)"/>
+      <use href="#bspray" transform="translate(968 1900) scale(0.9) rotate(-10)"/>
+      <use href="#bspray" transform="translate(900 1980) scale(0.95) rotate(20)"/>
+      <use href="#bspray" transform="translate(948 2240) scale(0.85) rotate(-8)"/>
+      <use href="#bspray" transform="translate(888 2360) scale(0.8) rotate(28)"/>
+    </g>
+  </g>
+
+  <path d="M0,2440 L140,2100 L320,2320 L500,1980 L680,2280 L860,2040 L1000,2240 L1000,3080 L0,3080 Z" fill="url(#ink3)" filter="url(#brush)"/>
+  <rect x="0" y="2360" width="1000" height="300" fill="url(#mist)" opacity="0.5" filter="url(#soft)"/>
+
+  <use href="#pine" transform="translate(150 2490) scale(1.05)" opacity="0.46" filter="url(#brushFine)"/>
+  <use href="#pine" transform="translate(232 2540) scale(0.82)" opacity="0.42" filter="url(#brushFine)"/>
+
+  <g stroke="#6e828f" stroke-width="4" fill="none" opacity="0.18" stroke-linecap="round" filter="url(#brushFine)">
+    <path d="M120,3180 q60,-24 120,0 t120,0 t120,0"/>
+    <path d="M540,3270 q60,-24 120,0 t120,0 t120,0"/>
+    <path d="M80,3380 q60,-24 120,0 t120,0 t120,0 t120,0"/>
+  </g>
+  <use href="#boat" transform="translate(300 3250) scale(1)" opacity="0.4" filter="url(#brushFine)"/>
+  <use href="#boat" transform="translate(660 3350) scale(0.8)" opacity="0.36" filter="url(#brushFine)"/>
+</svg>

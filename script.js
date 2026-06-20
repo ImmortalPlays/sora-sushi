@@ -168,6 +168,37 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeCart();
 });
 
+/* ---------- Style switcher (DEVELOPER-ONLY — no visible UI) ----------
+   Visitors never see a toggle. To switch the look, a developer can:
+     • Add a URL param:  ?style=traditional   or   ?style=modern
+     • Press the shortcut:  Shift + Alt + S   (flips between the two)
+   The choice is remembered in this browser via localStorage.
+*/
+const STYLES = { modern: "styles.css", traditional: "styles-traditional.css" };
+const themeCss = document.getElementById("themeCss");
+
+function applyStyle(name) {
+  if (!STYLES[name]) name = "modern";
+  themeCss.setAttribute("href", STYLES[name]);
+  localStorage.setItem("soraStyle", name);
+}
+
+function currentStyle() {
+  return localStorage.getItem("soraStyle") === "traditional" ? "traditional" : "modern";
+}
+
+// A ?style= URL param wins on load; otherwise use the saved choice.
+const urlStyle = new URLSearchParams(location.search).get("style");
+applyStyle(urlStyle && STYLES[urlStyle] ? urlStyle : currentStyle());
+
+// Secret dev shortcut: Shift + Alt + S toggles styles.
+document.addEventListener("keydown", (e) => {
+  if (e.shiftKey && e.altKey && (e.key === "s" || e.key === "S")) {
+    e.preventDefault();
+    applyStyle(currentStyle() === "modern" ? "traditional" : "modern");
+  }
+});
+
 /* ---------- Go ---------- */
 renderMenu();
 updateCart();
