@@ -1,26 +1,28 @@
-/* ===== Design tokens — black / red / white ===== */
+/* ===== Design tokens — white / black / red ===== */
 :root {
-  --black: #0e0e0e;
-  --panel: #161616;
-  --panel-2: #1d1d1d;
-  --white: #f7f5f2;
-  --muted: #b3aea7;
-  --red: #c8102e;
+  --bg: #f7f4ef;        /* warm white page */
+  --paper: #ffffff;     /* cards, surfaces */
+  --ink: #141414;       /* near-black text */
+  --muted: #5b574f;     /* soft gray text */
+  --red: #c8102e;       /* katana red */
   --red-deep: #9e0b22;
-  --line: rgba(255, 255, 255, 0.1);
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --dark: #0e0e0e;      /* dramatic dark section */
+  --line: #e7e2d8;
+  --line-dark: rgba(255, 255, 255, 0.12);
+  --shadow: 0 12px 34px rgba(20, 20, 20, 0.08);
   --radius: 14px;
 
-  /* Subtle dragon-scale (seigaiha) pattern, faint red arcs on black */
-  --scales:
-    radial-gradient(circle at 50% 100%,
-      transparent 0 23%,
-      rgba(200, 16, 46, 0.14) 23% 25%,
-      transparent 25% 35%,
-      rgba(200, 16, 46, 0.14) 35% 37%,
-      transparent 37% 47%,
-      rgba(200, 16, 46, 0.14) 47% 49%,
-      transparent 49%);
+  /* Faint diagonal "sword slash" streaks — works as a subtle texture */
+  --slash-light: repeating-linear-gradient(118deg,
+    transparent 0 46px,
+    rgba(200, 16, 46, 0.05) 46px 47px,
+    transparent 47px 86px,
+    rgba(20, 20, 20, 0.05) 86px 87px);
+  --slash-dark: repeating-linear-gradient(118deg,
+    transparent 0 46px,
+    rgba(200, 16, 46, 0.18) 46px 47px,
+    transparent 47px 86px,
+    rgba(255, 255, 255, 0.07) 86px 87px);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,13 +31,13 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  color: var(--white);
-  background: var(--black);
+  color: var(--ink);
+  background: var(--bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2 { font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.1; color: #fff; }
+h1, h2 { font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.1; color: var(--ink); }
 h2 { font-size: clamp(2rem, 4vw, 2.9rem); }
 
 .eyebrow {
@@ -49,8 +51,8 @@ h2 { font-size: clamp(2rem, 4vw, 2.9rem); }
 .eyebrow--light { color: var(--red); }
 
 code {
-  background: #2a2a2a;
-  color: var(--white);
+  background: #efe8d8;
+  color: var(--ink);
   padding: 0.1em 0.4em;
   border-radius: 5px;
   font-size: 0.9em;
@@ -71,8 +73,8 @@ code {
 .btn:active { transform: translateY(1px); }
 .btn--primary { background: var(--red); color: #fff; }
 .btn--primary:hover { background: var(--red-deep); }
-.btn--ghost { border-color: var(--white); color: var(--white); background: transparent; }
-.btn--ghost:hover { background: var(--white); color: var(--black); }
+.btn--ghost { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn--ghost:hover { background: var(--ink); color: #fff; }
 .btn--block { width: 100%; }
 .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
@@ -86,7 +88,7 @@ code {
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1rem clamp(1.2rem, 5vw, 4rem);
-  background: rgba(14, 14, 14, 0.85);
+  background: rgba(247, 244, 239, 0.88);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -94,7 +96,7 @@ code {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--ink);
   text-decoration: none;
   letter-spacing: 0.02em;
 }
@@ -111,7 +113,7 @@ code {
 .nav__cart {
   border: 1.5px solid var(--red);
   background: transparent;
-  color: var(--white);
+  color: var(--ink);
   padding: 0.5rem 1.1rem;
   border-radius: 999px;
   font: inherit;
@@ -144,17 +146,19 @@ code {
   display: flex;
   align-items: center;
   padding: 4rem clamp(1.2rem, 5vw, 4rem);
-  background-color: var(--black);
-  background-image: var(--scales);
-  background-size: 64px 32px;
+  background-color: var(--paper);
   overflow: hidden;
 }
 .hero::before {
-  /* darken the scale pattern toward the left so text stays readable */
+  /* Bold samurai sword slashes cutting across the right side */
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, var(--black) 25%, rgba(14, 14, 14, 0.65) 70%, rgba(14, 14, 14, 0.3));
+  background:
+    linear-gradient(118deg, transparent 0 60%, var(--red) 60% 61.3%, transparent 61.3%),
+    linear-gradient(118deg, transparent 0 68%, var(--ink) 68% 68.8%, transparent 68.8%),
+    linear-gradient(118deg, transparent 0 73%, rgba(200, 16, 46, 0.5) 73% 73.6%, transparent 73.6%),
+    var(--slash-light);
   pointer-events: none;
 }
 .hero::after {
@@ -164,9 +168,10 @@ code {
   bottom: -6rem;
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(16rem, 38vw, 34rem);
-  color: rgba(200, 16, 46, 0.12);
+  color: rgba(200, 16, 46, 0.13);
   line-height: 1;
   pointer-events: none;
+  z-index: 0;
 }
 .hero__inner { position: relative; z-index: 1; max-width: 640px; }
 .hero__eyebrow {
@@ -177,7 +182,7 @@ code {
   color: var(--red);
   margin-bottom: 1.2rem;
 }
-.hero__title { font-size: clamp(2.6rem, 6.5vw, 5rem); color: #fff; }
+.hero__title { font-size: clamp(2.6rem, 6.5vw, 5rem); color: var(--ink); }
 .hero__sub { margin: 1.4rem 0 2rem; font-size: 1.15rem; color: var(--muted); max-width: 30rem; }
 .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
@@ -195,7 +200,7 @@ code {
   margin: 0 auto;
 }
 .dish {
-  background: var(--panel);
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 1.4rem;
@@ -206,7 +211,7 @@ code {
 }
 .dish:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--red); }
 .dish__top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
-.dish__name { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600; color: #fff; }
+.dish__name { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600; color: var(--ink); }
 .dish__price { color: var(--red); font-weight: 600; white-space: nowrap; }
 .dish__desc { color: var(--muted); font-size: 0.92rem; flex-grow: 1; }
 .dish__tag {
@@ -214,8 +219,8 @@ code {
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--white);
-  background: var(--panel-2);
+  color: var(--ink);
+  background: var(--bg);
   border: 1px solid var(--line);
   padding: 0.2rem 0.6rem;
   border-radius: 999px;
@@ -258,7 +263,7 @@ code {
   display: flex;
   align-items: flex-end;
   padding: 1rem;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -268,16 +273,19 @@ code {
 .ph span { background: rgba(0, 0, 0, 0.45); padding: 0.3rem 0.7rem; border-radius: 999px; backdrop-filter: blur(2px); }
 .ph--about {
   min-height: 420px;
-  background-color: var(--black);
-  background-image: var(--scales);
-  background-size: 56px 28px;
+  background-color: var(--dark);
+  background-image:
+    linear-gradient(118deg, transparent 0 58%, var(--red) 58% 59.2%, transparent 59.2%),
+    linear-gradient(118deg, transparent 0 66%, rgba(255, 255, 255, 0.5) 66% 66.7%, transparent 66.7%),
+    var(--slash-dark);
 }
 .ph--g1 { background: linear-gradient(135deg, var(--red), var(--red-deep)); }
-.ph--g2 { background: linear-gradient(135deg, #1a1a1a, #333); }
-.ph--g3 { background: linear-gradient(135deg, #2b2b2b, #5a5a5a); }
+.ph--g2 { background: linear-gradient(135deg, #1a1a1a, #3a3a3a); }
+.ph--g3 { background: linear-gradient(135deg, #e7e2d8, #c4bdae); color: var(--ink); }
 .ph--g4 { background: linear-gradient(135deg, var(--red-deep), #5e0714); }
 .ph--g5 { background: linear-gradient(135deg, #111, #2c2c2c); }
-.ph--g6 { background: linear-gradient(135deg, #4a4a4a, #8a8a8a); }
+.ph--g6 { background: linear-gradient(135deg, #f2efe8, #d8d2c4); color: var(--ink); }
+.ph--g3 span, .ph--g6 span { background: rgba(0, 0, 0, 0.18); }
 
 /* ===== Gallery ===== */
 .gallery {
@@ -288,14 +296,26 @@ code {
   margin: 0 auto;
 }
 
-/* ===== Visit (scale-patterned) ===== */
+/* ===== Visit (dramatic dark block with slashes) ===== */
 .section--dark {
-  background-color: #080808;
-  background-image: var(--scales);
-  background-size: 64px 32px;
-  color: var(--white);
+  position: relative;
+  background-color: var(--dark);
+  color: #fff;
+  overflow: hidden;
+}
+.section--dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(118deg, transparent 0 30%, var(--red) 30% 31.1%, transparent 31.1%),
+    linear-gradient(118deg, transparent 0 38%, rgba(255, 255, 255, 0.35) 38% 38.7%, transparent 38.7%),
+    var(--slash-dark);
+  pointer-events: none;
 }
 .visit {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(2rem, 5vw, 4.5rem);
@@ -308,25 +328,25 @@ code {
   display: flex;
   justify-content: space-between;
   padding: 0.7rem 0;
-  border-bottom: 1px solid var(--line);
-  color: var(--muted);
+  border-bottom: 1px solid var(--line-dark);
+  color: #cfc9bf;
 }
 .hours li span:first-child { color: #fff; font-weight: 500; }
-.visit__addr { margin: 1rem 0; color: var(--muted); }
+.visit__addr { margin: 1rem 0; color: #cfc9bf; }
 .visit__addr a { color: var(--red); text-decoration: none; }
 .visit__addr a:hover { text-decoration: underline; }
 .visit__col .btn { margin-top: 1rem; }
 
 /* ===== Footer ===== */
-.footer { text-align: center; padding: 2.5rem 1rem; background: #050505; color: var(--muted); border-top: 1px solid var(--line); }
-.footer p:first-child { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: #fff; }
+.footer { text-align: center; padding: 2.5rem 1rem; background: var(--paper); color: var(--muted); border-top: 1px solid var(--line); }
+.footer p:first-child { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--ink); }
 .footer__fine { font-size: 0.8rem; margin-top: 0.4rem; opacity: 0.7; }
 
 /* ===== Cart drawer ===== */
 .cart-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(20, 20, 20, 0.5);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.25s ease, visibility 0.25s ease;
@@ -339,13 +359,13 @@ code {
   right: 0;
   height: 100%;
   width: min(400px, 90vw);
-  background: var(--panel);
+  background: var(--paper);
   z-index: 100;
   transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.55);
+  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.2);
 }
 .cart.open { transform: translateX(0); }
 .cart__head {
@@ -355,7 +375,7 @@ code {
   padding: 1.4rem 1.5rem;
   border-bottom: 1px solid var(--line);
 }
-.cart__head h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: #fff; }
+.cart__head h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--ink); }
 .cart__close { background: none; border: none; font-size: 1.8rem; line-height: 1; cursor: pointer; color: var(--muted); }
 .cart__items { flex-grow: 1; overflow-y: auto; padding: 1rem 1.5rem; }
 .cart__empty { color: var(--muted); text-align: center; margin-top: 3rem; }
@@ -367,7 +387,7 @@ code {
   border-bottom: 1px solid var(--line);
 }
 .cart-row__info { flex-grow: 1; }
-.cart-row__name { font-weight: 500; font-size: 0.95rem; color: #fff; }
+.cart-row__name { font-weight: 500; font-size: 0.95rem; color: var(--ink); }
 .cart-row__price { color: var(--muted); font-size: 0.85rem; }
 .qty { display: flex; align-items: center; gap: 0.6rem; }
 .qty button {
@@ -375,11 +395,11 @@ code {
   height: 1.7rem;
   border-radius: 50%;
   border: 1.5px solid var(--line);
-  background: var(--panel-2);
+  background: var(--bg);
   cursor: pointer;
   font-size: 1rem;
   line-height: 1;
-  color: var(--white);
+  color: var(--ink);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -387,7 +407,7 @@ code {
 .qty button:hover { border-color: var(--red); color: var(--red); }
 .qty span { min-width: 1.2rem; text-align: center; font-weight: 500; }
 .cart__foot { padding: 1.3rem 1.5rem; border-top: 1px solid var(--line); }
-.cart__total { display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 600; margin-bottom: 1rem; color: #fff; }
+.cart__total { display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 600; margin-bottom: 1rem; color: var(--ink); }
 .cart__note { font-size: 0.78rem; color: var(--muted); text-align: center; margin-top: 0.7rem; }
 
 /* ===== Responsive ===== */
