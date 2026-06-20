@@ -6,6 +6,7 @@
   --muted: #5b574f;
   --red: #c8102e;
   --red-deep: #9e0b22;
+  --gold: #c9a44c;
   --dark: #121212;
   --line: #e7e2d8;
   --line-dark: rgba(255, 255, 255, 0.14);
@@ -166,44 +167,61 @@ code {
 /* ===== Sections ===== */
 .section { position: relative; padding: clamp(4rem, 8vw, 7rem) clamp(1.2rem, 5vw, 4rem); }
 .section__head { max-width: 640px; margin: 0 auto 3rem; text-align: center; }
+.section__head h2 { display: inline-block; }
+.section__head h2::after {
+  content: "";
+  display: block;
+  width: 54px;
+  height: 2.5px;
+  margin: 0.7rem auto 0;
+  background: var(--gold);
+  border-radius: 2px;
+}
 .section__lead { color: var(--muted); margin-top: 0.8rem; }
 
 /*
-  Diagonal "slash" between color blocks.
-  Each block's top is a tilted gradient: a wedge of the PREVIOUS block's color,
-  a thin contrasting slash line, then this block's own color.
+  Diagonal "slash" between color blocks — built with clip-path so the edge
+  stays crisp (no pixelation). Each block paints a wedge of the PREVIOUS
+  block's color over its top, with a thin gold slash line on the seam.
+  The seam sits below the sticky nav so it never gets cut off.
 */
-#menu {
-  background-color: var(--dark);
-  background-image: linear-gradient(184deg,
-    var(--paper) 0, var(--paper) 62px,
-    var(--red) 62px, var(--red) 69px,
-    var(--dark) 69px);
-  color: #fff;
+#menu, #about, #gallery, #visit, .footer { position: relative; }
+#menu, #about, #gallery, #visit { padding-top: clamp(7rem, 10vw, 8rem); }
+
+#menu::before, #about::before, #gallery::before, #visit::before, .footer::before,
+#menu::after,  #about::after,  #gallery::after,  #visit::after,  .footer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  z-index: 0;
 }
-#about {
-  background-color: var(--bg);
-  background-image: linear-gradient(184deg,
-    var(--dark) 0, var(--dark) 62px,
-    var(--red) 62px, var(--red) 69px,
-    var(--bg) 69px);
+/* the wedge of the previous block's colour */
+#menu::before, #about::before, #gallery::before, #visit::before, .footer::before {
+  clip-path: polygon(0 0, 100% 0, 100% 72px, 0 96px);
 }
-#gallery {
-  background-color: var(--red);
-  background-image: linear-gradient(184deg,
-    var(--bg) 0, var(--bg) 62px,
-    var(--dark) 62px, var(--dark) 69px,
-    var(--red) 69px);
-  color: #fff;
+/* the thin gold slash line on the seam */
+#menu::after, #about::after, #gallery::after, #visit::after, .footer::after {
+  background: var(--gold);
+  clip-path: polygon(0 96px, 100% 72px, 100% 74.5px, 0 98.5px);
 }
-#visit {
-  background-color: var(--dark);
-  background-image: linear-gradient(184deg,
-    var(--red) 0, var(--red) 62px,
-    #fff 62px, #fff 69px,
-    var(--dark) 69px);
-  color: #fff;
-}
+
+#menu  { background: var(--dark); color: #fff; }
+#about { background: var(--bg); }
+#gallery { background: var(--red); color: #fff; }
+#visit { background: var(--dark); color: #fff; }
+
+#menu::before    { background: var(--paper); }  /* from white hero */
+#about::before   { background: var(--dark); }   /* from black menu */
+#gallery::before { background: var(--bg); }      /* from white about */
+#visit::before   { background: var(--red); }     /* from red gallery */
+.footer::before  { background: var(--dark); }    /* from black visit */
+
+/* keep section content above the seam layers */
+.section > * { position: relative; z-index: 1; }
 
 /* Per-block text colors on dark/red blocks */
 #menu h2, #gallery h2, #visit h2 { color: #fff; }
@@ -240,9 +258,9 @@ code {
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--gold);
   background: #262626;
-  border: 1px solid var(--line-dark);
+  border: 1px solid rgba(201, 164, 76, 0.45);
   padding: 0.2rem 0.6rem;
   border-radius: 999px;
 }
@@ -338,15 +356,12 @@ code {
 /* ===== Footer (white block) ===== */
 .footer {
   text-align: center;
-  padding: 3rem 1rem 2.5rem;
-  background-color: var(--paper);
-  background-image: linear-gradient(184deg,
-    var(--dark) 0, var(--dark) 62px,
-    var(--red) 62px, var(--red) 69px,
-    var(--paper) 69px);
+  padding: clamp(7rem, 10vw, 8rem) 1rem 2.5rem;
+  background: var(--paper);
   color: var(--muted);
 }
-.footer p:first-child { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--ink); margin-top: 1.5rem; }
+.footer p { position: relative; z-index: 1; }
+.footer p:first-child { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--ink); }
 .footer__fine { font-size: 0.8rem; margin-top: 0.4rem; opacity: 0.7; }
 
 /* ===== Cart drawer ===== */
