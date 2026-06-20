@@ -193,20 +193,31 @@ code {
   content: "";
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  /* full-bleed across the viewport, even when the section is max-width'd */
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
   height: 100px;
   pointer-events: none;
   z-index: 0;
 }
-/* the wedge of the previous block's colour */
-#menu::before, #about::before, #gallery::before, #visit::before, .footer::before {
-  clip-path: polygon(0 0, 100% 0, 100% 72px, 0 96px);
-}
-/* the thin gold slash line on the seam */
 #menu::after, #about::after, #gallery::after, #visit::after, .footer::after {
   background: var(--gold);
+}
+/* Slashes ALTERNATE direction: A leans one way, B mirrors it. */
+/* Variant A — menu, gallery, footer */
+#menu::before, #gallery::before, .footer::before {
+  clip-path: polygon(0 0, 100% 0, 100% 72px, 0 96px);
+}
+#menu::after, #gallery::after, .footer::after {
   clip-path: polygon(0 96px, 100% 72px, 100% 74.5px, 0 98.5px);
+}
+/* Variant B (mirrored) — about, visit */
+#about::before, #visit::before {
+  clip-path: polygon(0 0, 100% 0, 100% 96px, 0 72px);
+}
+#about::after, #visit::after {
+  clip-path: polygon(0 72px, 100% 96px, 100% 98.5px, 0 74.5px);
 }
 
 #menu  { background: var(--dark); color: #fff; }
@@ -231,12 +242,31 @@ code {
 #gallery code { background: rgba(0, 0, 0, 0.22); color: #fff; }
 
 /* ===== Menu (on dark block) ===== */
+.menu-group { max-width: 1080px; margin: 0 auto; }
+.menu-group + .menu-group { margin-top: 3rem; }
+.menu-cat {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.65rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.menu-cat::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: var(--gold);
+  flex: none;
+}
 .menu {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.2rem;
-  max-width: 1080px;
-  margin: 0 auto;
 }
 .dish {
   background: #1b1b1b;
