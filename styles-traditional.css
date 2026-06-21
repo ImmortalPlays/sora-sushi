@@ -10,15 +10,23 @@
   --washi-2: #f4eeda;      /* lighter panel */
   --sumi: #272320;         /* ink */
   --sumi-soft: #5d564a;
-  --ai: #294a6b;           /* indigo */
+  --ai: #294a6b;           /* 藍 indigo */
   --ai-deep: #16314c;
-  --shu: #b23a26;          /* vermilion / seal red */
+  --shu: #b23a26;          /* 朱 vermilion / seal red */
   --shu-deep: #8f2c1c;
-  --kin: #b08d3e;          /* gold */
+  --kin: #b08d3e;          /* 金 gold */
   --line: #d6c8a6;
   --line-dark: rgba(244, 238, 218, 0.18);
   --shadow: 0 14px 36px rgba(39, 35, 32, 0.16);
   --radius: 3px;
+
+  /* faint seigaiha wave pattern */
+  --wave: radial-gradient(circle at 50% 100%,
+    transparent 0 32%, rgba(41, 74, 107, 0.13) 32% 34%,
+    transparent 34% 44%, rgba(41, 74, 107, 0.13) 44% 46%,
+    transparent 46% 56%, rgba(41, 74, 107, 0.13) 56% 58%,
+    transparent 58%);
+  /* light waves for use on dark indigo blocks */
   --wave-light: radial-gradient(circle at 50% 100%,
     transparent 0 32%, rgba(240, 232, 210, 0.10) 32% 34%,
     transparent 34% 44%, rgba(240, 232, 210, 0.10) 44% 46%,
@@ -149,6 +157,24 @@ code {
   transition: background 0.2s ease, color 0.2s ease;
 }
 .nav__cart:hover { background: var(--shu); color: #f7efdc; }
+.nav__right { display: flex; align-items: center; gap: 0.6rem; }
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 40px;
+  height: 38px;
+  padding: 0 9px;
+  background: transparent;
+  border: 1.5px solid var(--sumi);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.nav__burger span { display: block; height: 2px; background: var(--sumi); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
+.nav__burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav__burger.open span:nth-child(2) { opacity: 0; }
+.nav__burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 .nav__cart-count {
   background: var(--shu);
   color: #f7efdc;
@@ -169,12 +195,13 @@ code {
   display: flex;
   align-items: center;
   padding: 4rem clamp(1.2rem, 5vw, 4rem);
-  background: transparent;
+  background: transparent;          /* let the valley + red sun show through */
   overflow: hidden;
   border-bottom: 2px solid var(--sumi);
 }
-.hero::after { content: none; }
+.hero::after { content: none; }      /* the red sun is the hero motif now */
 .hero__inner { position: relative; z-index: 1; max-width: 640px; }
+/* a vermilion hanko seal above the headline */
 .hero__eyebrow {
   display: inline-block;
   letter-spacing: 0.3em;
@@ -214,6 +241,7 @@ code {
 }
 .section__lead { color: var(--sumi-soft); margin-top: 0.9rem; }
 
+/* thin double-rule divider at the top of inner blocks */
 #menu, #gallery { border-top: 1px solid var(--line); box-shadow: 0 -5px 0 -4px var(--kin); }
 
 /* ===== Menu ===== */
@@ -288,6 +316,41 @@ code {
 }
 .dish__add:hover { background: var(--shu); color: #f7efdc; }
 
+/* Hover reveal: the food photo slides up with a faded info bar */
+.dish { position: relative; overflow: hidden; }
+.dish__reveal {
+  position: absolute;
+  inset: 0;
+  background-image: var(--img), linear-gradient(150deg, #2c4a6b, #15304a);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  transform: translateY(101%);
+  transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.dish__bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 1.6rem 1.2rem 1rem;
+  background: linear-gradient(to top, rgba(20, 17, 14, 0.92), rgba(20, 17, 14, 0));
+  transform: translateY(18px);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+.dish__bar-name { color: #f4eeda; font-family: 'Shippori Mincho', serif; font-size: 1.2rem; font-weight: 700; }
+.dish__add--bar { pointer-events: auto; margin: 0; flex: none; background: var(--shu); color: #f7efdc; border-color: var(--shu); }
+.dish__add--bar:hover { background: #f7efdc; color: var(--shu); }
+@media (hover: hover) and (pointer: fine) {
+  .dish:hover .dish__reveal { transform: translateY(0); }
+  .dish:hover .dish__bar { transform: translateY(0); opacity: 1; transition-delay: 0.12s; }
+}
+@media (hover: none) { .dish__reveal { display: none; } }
+
 /* ===== Split (About) ===== */
 .section--split {
   display: grid;
@@ -303,7 +366,7 @@ code {
 .stat strong { display: block; font-family: 'Shippori Mincho', serif; font-size: 1.9rem; font-weight: 700; color: var(--shu); }
 .stat span { font-size: 0.85rem; color: var(--sumi-soft); }
 
-/* ===== Placeholders ===== */
+/* ===== Placeholders (swap for real photos) ===== */
 .ph {
   border-radius: var(--radius);
   min-height: 220px;
@@ -324,6 +387,7 @@ code {
   background-image: var(--wave-light);
   background-size: 54px 27px;
 }
+/* ukiyo-e earth palette tiles: indigo, vermilion, gold-ochre, ink */
 .ph--g1 { background: linear-gradient(135deg, var(--ai), var(--ai-deep)); }
 .ph--g2 { background: linear-gradient(135deg, var(--shu), var(--shu-deep)); }
 .ph--g3 { background: linear-gradient(135deg, #c9a24a, #8a6a28); }
@@ -461,11 +525,33 @@ code {
 
 /* ===== Responsive ===== */
 @media (max-width: 820px) {
-  .nav__links { display: none; }
+  .nav__burger { display: flex; }
+  .nav__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--washi-2);
+    padding: 0.4rem clamp(1.2rem, 5vw, 4rem) 0.8rem;
+    border-bottom: 2px solid var(--sumi);
+    box-shadow: var(--shadow);
+    transform: translateY(-14px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .nav__links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .nav__links a { padding: 0.85rem 0; border-bottom: 1px solid var(--line); }
+  .nav__links a:last-child { border-bottom: none; }
   .section--split { grid-template-columns: 1fr; }
   .visit { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 520px) {
   .gallery { grid-template-columns: 1fr; }
+  .menu { grid-template-columns: 1fr; }
+  .nav { gap: 0.8rem; }
+  .hero { min-height: 70vh; }
 }

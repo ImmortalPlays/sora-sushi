@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ============================================================
+       SORA SUSHI — TWO VISUAL STYLES (developer reminder)
+       The site ships with two looks that restyle the same page:
+         • Modern  -> styles.css              (black / red / white slashes)
+         • Classic -> styles-traditional.css  (traditional sumi-e ink art)
+
+       HOW TO SWITCH (developer-only — visitors never see a button):
+         1) Press   Shift + Alt + S   on the page, OR
+         2) Add a URL parameter:   ?style=traditional   or   ?style=modern
+
+       Your choice is remembered in the browser (localStorage). Default = modern.
+       The switch logic lives in script.js under "Style switcher".
+       ============================================================ -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sora Sushi — Modern Japanese Dining</title>
@@ -31,15 +44,20 @@
   <!-- ===== Navigation ===== -->
   <header class="nav" id="top">
     <a href="#top" class="nav__logo">空 <span>Sora Sushi</span></a>
-    <nav class="nav__links">
+    <nav class="nav__links" id="navLinks">
       <a href="#menu">Menu</a>
       <a href="#about">About</a>
       <a href="#gallery">Gallery</a>
       <a href="#visit">Visit</a>
     </nav>
-    <button class="nav__cart" id="cartButton" aria-label="Open cart">
-      Cart <span class="nav__cart-count" id="cartCount">0</span>
-    </button>
+    <div class="nav__right">
+      <button class="nav__cart" id="cartButton" aria-label="Open cart">
+        Cart <span class="nav__cart-count" id="cartCount">0</span>
+      </button>
+      <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
   <!-- ===== Hero ===== -->
