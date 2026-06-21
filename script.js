@@ -38,7 +38,7 @@ const menuGrid = document.getElementById("menuGrid");
 
 function dishCard(dish) {
   return `
-    <article class="dish" style="--img:url('images/menu/${dish.id}.jpg')">
+    <article class="dish">
       <div class="dish__media" aria-hidden="true"></div>
       <div class="dish__top">
         <h3 class="dish__name">${dish.name}</h3>
@@ -64,6 +64,39 @@ function renderMenu() {
       </div>
     `;
   }).join("");
+}
+
+// Find each dish's photo in images/menu/ no matter the file type OR name.
+// We try a few extensions (jpg, webp, png...) and BOTH the dish id and a
+// slug of its name (so "tuna-nigiri" OR "bluefin-tuna" both work). The first
+// file that actually exists is used; a missing photo keeps the fallback.
+const IMG_EXTS = ["jpg", "jpeg", "webp", "png"];
+function slugify(s) {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+function loadDishImages() {
+  document.querySelectorAll("#menuGrid .dish").forEach((card) => {
+    const btn = card.querySelector(".dish__add");
+    const id = btn && btn.dataset.id;
+    if (!id) return;
+    const dish = findDish(id);
+    const names = [id];
+    if (dish) {
+      const ns = slugify(dish.name);
+      if (ns && ns !== id) names.push(ns);
+    }
+    const urls = [];
+    names.forEach((n) => IMG_EXTS.forEach((ext) => urls.push("images/menu/" + n + "." + ext)));
+    let i = 0;
+    (function tryNext() {
+      if (i >= urls.length) return;
+      const url = urls[i++];
+      const probe = new Image();
+      probe.onload = () => card.style.setProperty("--img", "url('" + url + "')");
+      probe.onerror = tryNext;
+      probe.src = url;
+    })();
+  });
 }
 
 /* ---------- Cart helpers ---------- */
@@ -224,4 +257,5 @@ document.addEventListener("keydown", (e) => {
 
 /* ---------- Go ---------- */
 renderMenu();
+loadDishImages();
 updateCart();

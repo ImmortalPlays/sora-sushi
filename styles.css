@@ -344,7 +344,7 @@ code {
   z-index: 0;
   background-image:
     linear-gradient(to top, rgba(8, 8, 8, 0.72), rgba(8, 8, 8, 0.2) 50%, rgba(8, 8, 8, 0.42)),
-    var(--img),
+    var(--img, url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7")),
     linear-gradient(150deg, #2b2b2b, #0d0d0d);
   background-size: cover;
   background-position: center;
