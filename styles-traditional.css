@@ -316,40 +316,41 @@ code {
 }
 .dish__add:hover { background: var(--shu); color: #f7efdc; }
 
-/* Hover reveal: the food photo slides up with a faded info bar */
-.dish { position: relative; overflow: hidden; }
-.dish__reveal {
+/* Click/tap a card (not the Add button) to pop up the food photo:
+   the card's text fades out, the image shows, and the dish title sits at
+   the bottom (right) while the Add button keeps its usual spot (left). */
+.dish { position: relative; overflow: hidden; cursor: pointer; }
+.dish > *:not(.dish__media) { position: relative; z-index: 1; }
+.dish__media {
   position: absolute;
   inset: 0;
-  background-image: var(--img), linear-gradient(150deg, #2c4a6b, #15304a);
+  z-index: 0;
+  background-image:
+    linear-gradient(to top, rgba(18, 15, 12, 0.72), rgba(18, 15, 12, 0.18) 50%, rgba(18, 15, 12, 0.45)),
+    var(--img),
+    linear-gradient(150deg, #2c4a6b, #15304a);
   background-size: cover;
   background-position: center;
-  display: flex;
-  align-items: flex-end;
-  transform: translateY(101%);
-  transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-}
-.dish__bar {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.8rem;
-  padding: 1.6rem 1.2rem 1rem;
-  background: linear-gradient(to top, rgba(20, 17, 14, 0.92), rgba(20, 17, 14, 0));
-  transform: translateY(18px);
   opacity: 0;
-  transition: transform 0.35s ease, opacity 0.35s ease;
+  transition: opacity 0.4s ease;
 }
-.dish__bar-name { color: #f4eeda; font-family: 'Shippori Mincho', serif; font-size: 1.2rem; font-weight: 700; }
-.dish__add--bar { pointer-events: auto; margin: 0; flex: none; background: var(--shu); color: #f7efdc; border-color: var(--shu); }
-.dish__add--bar:hover { background: #f7efdc; color: var(--shu); }
-@media (hover: hover) and (pointer: fine) {
-  .dish:hover .dish__reveal { transform: translateY(0); }
-  .dish:hover .dish__bar { transform: translateY(0); opacity: 1; transition-delay: 0.12s; }
+.dish__top, .dish__tag, .dish__desc { transition: opacity 0.3s ease; }
+.dish__foot { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
+.dish__foot .dish__add { margin: 0; }
+.dish__caption {
+  display: none;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #f4eeda;
+  line-height: 1.15;
 }
-@media (hover: none) { .dish__reveal { display: none; } }
+.dish--show .dish__media { opacity: 1; }
+.dish--show .dish__top,
+.dish--show .dish__tag,
+.dish--show .dish__desc { opacity: 0; }
+.dish--show .dish__caption { display: block; }
+.dish--show .dish__add { background: var(--shu); color: #f7efdc; border-color: var(--shu); }
 
 /* ===== Split (About) ===== */
 .section--split {

@@ -39,19 +39,16 @@ const menuGrid = document.getElementById("menuGrid");
 function dishCard(dish) {
   return `
     <article class="dish" style="--img:url('images/menu/${dish.id}.jpg')">
+      <div class="dish__media" aria-hidden="true"></div>
       <div class="dish__top">
         <h3 class="dish__name">${dish.name}</h3>
         <span class="dish__price">$${dish.price.toFixed(2)}</span>
       </div>
       <span class="dish__tag">${dish.tag}</span>
       <p class="dish__desc">${dish.desc}</p>
-      <button class="dish__add" data-id="${dish.id}">Add to order</button>
-      <!-- Revealed on hover: food photo slides up with a faded info bar. -->
-      <div class="dish__reveal" aria-hidden="true">
-        <div class="dish__bar">
-          <span class="dish__bar-name">${dish.name}</span>
-          <button class="dish__add dish__add--bar" data-id="${dish.id}" tabindex="-1">+ Add</button>
-        </div>
+      <div class="dish__foot">
+        <button class="dish__add" data-id="${dish.id}">Add to order</button>
+        <span class="dish__caption">${dish.name}</span>
       </div>
     </article>
   `;
@@ -151,10 +148,16 @@ document.getElementById("cartButton").addEventListener("click", openCart);
 document.getElementById("cartClose").addEventListener("click", closeCart);
 overlay.addEventListener("click", closeCart);
 
-// "Add to order" buttons (event delegation on the menu grid)
+// Menu clicks: the "Add" button adds to the cart; clicking anywhere else
+// on a card flips it to show (or hide) the food photo.
 menuGrid.addEventListener("click", (e) => {
-  const btn = e.target.closest(".dish__add");
-  if (btn) addToCart(btn.dataset.id);
+  const add = e.target.closest(".dish__add");
+  if (add) {
+    addToCart(add.dataset.id);
+    return;
+  }
+  const dish = e.target.closest(".dish");
+  if (dish) dish.classList.toggle("dish--show");
 });
 
 // +/- buttons inside the cart (event delegation)
