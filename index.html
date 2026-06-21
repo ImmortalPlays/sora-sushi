@@ -44,15 +44,20 @@
   <!-- ===== Navigation ===== -->
   <header class="nav" id="top">
     <a href="#top" class="nav__logo">空 <span>Sora Sushi</span></a>
-    <nav class="nav__links">
+    <nav class="nav__links" id="navLinks">
       <a href="#menu">Menu</a>
       <a href="#about">About</a>
       <a href="#gallery">Gallery</a>
       <a href="#visit">Visit</a>
     </nav>
-    <button class="nav__cart" id="cartButton" aria-label="Open cart">
-      Cart <span class="nav__cart-count" id="cartCount">0</span>
-    </button>
+    <div class="nav__right">
+      <button class="nav__cart" id="cartButton" aria-label="Open cart">
+        Cart <span class="nav__cart-count" id="cartCount">0</span>
+      </button>
+      <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
   <!-- ===== Hero ===== -->

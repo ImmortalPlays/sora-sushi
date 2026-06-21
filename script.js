@@ -38,7 +38,7 @@ const menuGrid = document.getElementById("menuGrid");
 
 function dishCard(dish) {
   return `
-    <article class="dish">
+    <article class="dish" style="--img:url('images/menu/${dish.id}.jpg')">
       <div class="dish__top">
         <h3 class="dish__name">${dish.name}</h3>
         <span class="dish__price">$${dish.price.toFixed(2)}</span>
@@ -46,6 +46,13 @@ function dishCard(dish) {
       <span class="dish__tag">${dish.tag}</span>
       <p class="dish__desc">${dish.desc}</p>
       <button class="dish__add" data-id="${dish.id}">Add to order</button>
+      <!-- Revealed on hover: food photo slides up with a faded info bar. -->
+      <div class="dish__reveal" aria-hidden="true">
+        <div class="dish__bar">
+          <span class="dish__bar-name">${dish.name}</span>
+          <button class="dish__add dish__add--bar" data-id="${dish.id}" tabindex="-1">+ Add</button>
+        </div>
+      </div>
     </article>
   `;
 }
@@ -167,6 +174,19 @@ checkoutBtn.addEventListener("click", () => {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeCart();
 });
+
+/* ---------- Mobile nav (hamburger) ---------- */
+const navBurger = document.getElementById("navBurger");
+const navLinks = document.getElementById("navLinks");
+
+function setMenu(open) {
+  navLinks.classList.toggle("open", open);
+  navBurger.classList.toggle("open", open);
+  navBurger.setAttribute("aria-expanded", open ? "true" : "false");
+}
+navBurger.addEventListener("click", () => setMenu(!navLinks.classList.contains("open")));
+// Close the menu after tapping a link.
+navLinks.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
 
 /* ---------- Style switcher (DEVELOPER-ONLY — no visible UI) ----------
    Visitors never see a toggle. To switch the look, a developer can:
