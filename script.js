@@ -40,14 +40,16 @@ function dishCard(dish) {
   return `
     <article class="dish" style="--img:url('images/menu/${dish.id}.jpg')">
       <div class="dish__media" aria-hidden="true"></div>
-      <span class="dish__peek" aria-hidden="true"></span>
       <div class="dish__top">
         <h3 class="dish__name">${dish.name}</h3>
         <span class="dish__price">$${dish.price.toFixed(2)}</span>
       </div>
       <span class="dish__tag">${dish.tag}</span>
       <p class="dish__desc">${dish.desc}</p>
-      <button class="dish__add" data-id="${dish.id}">Add to order</button>
+      <div class="dish__foot">
+        <span class="dish__caption">${dish.name}</span>
+        <button class="dish__add" data-id="${dish.id}">Add to order</button>
+      </div>
     </article>
   `;
 }
