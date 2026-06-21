@@ -335,7 +335,7 @@ code {
 
 /* Click/tap a card (not the Add button) to pop up the food photo:
    the card's text fades out, the image shows, and the dish title sits at
-   the bottom next to the Add button. */
+   the bottom (right) while the Add button keeps its usual spot (left). */
 .dish { position: relative; overflow: hidden; cursor: pointer; }
 .dish > *:not(.dish__media) { position: relative; z-index: 1; }
 .dish__media {
@@ -352,7 +352,7 @@ code {
   transition: opacity 0.4s ease;
 }
 .dish__top, .dish__tag, .dish__desc { transition: opacity 0.3s ease; }
-.dish__foot { display: flex; align-items: center; gap: 0.8rem; }
+.dish__foot { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
 .dish__foot .dish__add { margin: 0; }
 .dish__caption {
   display: none;
@@ -366,7 +366,6 @@ code {
 .dish--show .dish__top,
 .dish--show .dish__tag,
 .dish--show .dish__desc { opacity: 0; }
-.dish--show .dish__foot { justify-content: space-between; }
 .dish--show .dish__caption { display: block; }
 .dish--show .dish__add { background: var(--red); color: #fff; border-color: var(--red); }
 

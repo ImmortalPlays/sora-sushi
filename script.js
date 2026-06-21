@@ -47,8 +47,8 @@ function dishCard(dish) {
       <span class="dish__tag">${dish.tag}</span>
       <p class="dish__desc">${dish.desc}</p>
       <div class="dish__foot">
-        <span class="dish__caption">${dish.name}</span>
         <button class="dish__add" data-id="${dish.id}">Add to order</button>
+        <span class="dish__caption">${dish.name}</span>
       </div>
     </article>
   `;
