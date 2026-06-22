@@ -119,6 +119,19 @@ code {
   transition: background 0.2s ease, color 0.2s ease;
 }
 .nav__cart:hover { background: var(--red); color: #fff; }
+.nav__style {
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.nav__style:hover { background: var(--ink); color: #fff; }
 .nav__right { display: flex; align-items: center; gap: 0.6rem; }
 .nav__burger {
   display: none;

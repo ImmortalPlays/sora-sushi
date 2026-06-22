@@ -224,34 +224,48 @@ navBurger.addEventListener("click", () => setMenu(!navLinks.classList.contains("
 // Close the menu after tapping a link.
 navLinks.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
 
-/* ---------- Style switcher (DEVELOPER-ONLY — no visible UI) ----------
-   Visitors never see a toggle. To switch the look, a developer can:
-     • Add a URL param:  ?style=traditional   or   ?style=modern
-     • Press the shortcut:  Shift + Alt + S   (flips between the two)
+/* ---------- Style switcher ----------
+   The site ships with two looks for the same page. Visitors switch with the
+   "Classic look" / "Modern look" button in the nav bar. The default is modern.
+   Power users can also switch via:
+     • A URL param:  ?style=traditional   or   ?style=modern
+     • The shortcut: Shift + Alt + S   (flips between the two)
    The choice is remembered in this browser via localStorage.
 */
 const STYLES = { modern: "styles.css", traditional: "styles-traditional.css" };
 const themeCss = document.getElementById("themeCss");
+const styleToggle = document.getElementById("styleToggle");
 
 function applyStyle(name) {
   if (!STYLES[name]) name = "modern";
   themeCss.setAttribute("href", STYLES[name]);
   localStorage.setItem("soraStyle", name);
+  // Button shows the look you'd switch TO.
+  if (styleToggle) {
+    styleToggle.textContent = name === "modern" ? "Classic look" : "Modern look";
+  }
 }
 
 function currentStyle() {
   return localStorage.getItem("soraStyle") === "traditional" ? "traditional" : "modern";
 }
 
+function toggleStyle() {
+  applyStyle(currentStyle() === "modern" ? "traditional" : "modern");
+}
+
 // A ?style= URL param wins on load; otherwise use the saved choice.
 const urlStyle = new URLSearchParams(location.search).get("style");
 applyStyle(urlStyle && STYLES[urlStyle] ? urlStyle : currentStyle());
 
-// Secret dev shortcut: Shift + Alt + S toggles styles.
+// The visible nav button toggles the look.
+if (styleToggle) styleToggle.addEventListener("click", toggleStyle);
+
+// Shortcut: Shift + Alt + S toggles styles.
 document.addEventListener("keydown", (e) => {
   if (e.shiftKey && e.altKey && (e.key === "s" || e.key === "S")) {
     e.preventDefault();
-    applyStyle(currentStyle() === "modern" ? "traditional" : "modern");
+    toggleStyle();
   }
 });
 

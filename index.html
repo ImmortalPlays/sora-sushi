@@ -7,9 +7,10 @@
          • Modern  -> styles.css              (black / red / white slashes)
          • Classic -> styles-traditional.css  (traditional sumi-e ink art)
 
-       HOW TO SWITCH (developer-only — visitors never see a button):
-         1) Press   Shift + Alt + S   on the page, OR
-         2) Add a URL parameter:   ?style=traditional   or   ?style=modern
+       HOW TO SWITCH:
+         1) Click the "Classic look" / "Modern look" button in the nav bar, OR
+         2) Press   Shift + Alt + S   on the page, OR
+         3) Add a URL parameter:   ?style=traditional   or   ?style=modern
 
        Your choice is remembered in the browser (localStorage). Default = modern.
        The switch logic lives in script.js under "Style switcher".
@@ -51,6 +52,7 @@
       <a href="#visit">Visit</a>
     </nav>
     <div class="nav__right">
+      <button class="nav__style" id="styleToggle" aria-label="Switch visual style">Classic look</button>
       <button class="nav__cart" id="cartButton" aria-label="Open cart">
         Cart <span class="nav__cart-count" id="cartCount">0</span>
       </button>
