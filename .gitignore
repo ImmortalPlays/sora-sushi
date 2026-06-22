@@ -10,5 +10,9 @@ Thumbs.db
 *.log
 .playwright-mcp/
 
+# Browser "Save Page As" snapshots — NOT the real site (index.html is the site)
+Sora Sushi*.html
+*_files/
+
 # Dependencies (if you ever add a build step)
 node_modules/
