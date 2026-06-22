@@ -1,0 +1,14 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+*.code-workspace
+
+# Logs & temp test artifacts
+*.log
+.playwright-mcp/
+
+# Dependencies (if you ever add a build step)
+node_modules/

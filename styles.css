@@ -335,7 +335,7 @@ code {
 
 /* Click/tap a card (not the Add button) to pop up the food photo:
    the card's text fades out, the image shows, and the dish title sits at
-   the bottom (right) while the Add button keeps its usual spot (left). */
+   the bottom next to the Add button. */
 .dish { position: relative; overflow: hidden; cursor: pointer; }
 .dish > *:not(.dish__media) { position: relative; z-index: 1; }
 .dish__media {

@@ -54,18 +54,6 @@ function dishCard(dish) {
   `;
 }
 
-function renderMenu() {
-  menuGrid.innerHTML = CATEGORIES.map((cat) => {
-    const items = MENU.filter((d) => d.cat === cat);
-    return `
-      <div class="menu-group">
-        <h3 class="menu-cat">${cat}</h3>
-        <div class="menu">${items.map(dishCard).join("")}</div>
-      </div>
-    `;
-  }).join("");
-}
-
 // Find each dish's photo in images/menu/ no matter the file type OR name.
 // We try a few extensions (jpg, webp, png...) and BOTH the dish id and a
 // slug of its name (so "tuna-nigiri" OR "bluefin-tuna" both work). The first
@@ -97,6 +85,18 @@ function loadDishImages() {
       probe.src = url;
     })();
   });
+}
+
+function renderMenu() {
+  menuGrid.innerHTML = CATEGORIES.map((cat) => {
+    const items = MENU.filter((d) => d.cat === cat);
+    return `
+      <div class="menu-group">
+        <h3 class="menu-cat">${cat}</h3>
+        <div class="menu">${items.map(dishCard).join("")}</div>
+      </div>
+    `;
+  }).join("");
 }
 
 /* ---------- Cart helpers ---------- */

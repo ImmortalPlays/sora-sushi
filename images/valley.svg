@@ -78,6 +78,7 @@
       <circle cx="0" cy="0" r="2.1" fill="#bd647c"/>
     </g>
 
+    <!-- bamboo leaf + a drooping spray of leaves -->
     <path id="bleaf" d="M0,0 Q10,-36 2,-74 Q-8,-36 0,0 Z"/>
     <g id="bspray">
       <use href="#bleaf" transform="rotate(-40) scale(1.05)"/>
@@ -86,14 +87,17 @@
       <use href="#bleaf" transform="rotate(26) scale(0.95)"/>
       <use href="#bleaf" transform="rotate(50) scale(0.8)"/>
     </g>
+
   </defs>
 
   <rect x="0" y="0" width="1000" height="4000" fill="url(#sky)"/>
 
+  <!-- seamless red sun with the 空 logo -->
   <circle cx="720" cy="360" r="270" fill="url(#sunGlow)"/>
   <circle cx="720" cy="360" r="190" fill="url(#sunCore)"/>
   <text x="720" y="430" text-anchor="middle" font-family="'Yuji Syuku','Hiragino Mincho ProN','Yu Mincho',serif" font-size="210" fill="#f4ecd6" opacity="0.82">空</text>
 
+  <!-- cherry blossom branch weaving DOWN the left side -->
   <g opacity="0.6">
     <g stroke="#3a2f28" fill="none" stroke-linecap="round" filter="url(#brushFine)">
       <path d="M64,20 C 24,170 168,300 96,470 C 34,628 176,792 104,968 C 44,1130 168,1300 116,1500 C 64,1664 178,1828 112,2000 C 52,2166 174,2336 120,2520 C 78,2682 158,2812 128,2950" stroke-width="9"/>
@@ -142,23 +146,28 @@
     </g>
   </g>
 
+  <!-- distant ink birds -->
   <g stroke="#2b3137" stroke-width="3" fill="none" opacity="0.34" stroke-linecap="round" filter="url(#brushFine)">
     <path d="M470,560 q22,-18 44,0 q22,-18 44,0"/>
     <path d="M545,512 q18,-15 36,0 q18,-15 36,0"/>
   </g>
 
+  <!-- distant misty peaks -->
   <path d="M0,940 L120,810 L240,890 L380,740 L520,850 L680,720 L820,830 L1000,740 L1000,1360 L0,1360 Z" fill="url(#ink1)" filter="url(#brush)"/>
   <rect x="0" y="900" width="1000" height="340" fill="url(#mist)" opacity="0.9" filter="url(#soft)"/>
 
+  <!-- mid range -->
   <path d="M0,1540 L150,1320 L300,1450 L430,1140 L520,1320 L660,1180 L800,1360 L920,1260 L1000,1340 L1000,2080 L0,2080 Z" fill="url(#ink2)" filter="url(#brush)"/>
   <rect x="0" y="1540" width="1000" height="360" fill="url(#mist)" opacity="0.82" filter="url(#soft)"/>
 
+  <!-- temple on the mid ridge -->
   <use href="#temple" transform="translate(440 1880) scale(1.15)" opacity="0.5" filter="url(#brushFine)"/>
   <g fill="#b5602a" opacity="0.46" filter="url(#brushFine)">
     <circle cx="362" cy="1900" r="13"/><circle cx="378" cy="1888" r="10"/><circle cx="348" cy="1890" r="9"/>
     <circle cx="582" cy="1910" r="12"/><circle cx="598" cy="1900" r="9"/>
   </g>
 
+  <!-- bamboo grove on the RIGHT -->
   <g opacity="0.42" filter="url(#brushFine)">
     <g stroke="#20262a" fill="none" stroke-linecap="round">
       <path d="M884,2760 C 876,2380 888,1980 882,1500" stroke-width="11"/>
@@ -178,12 +187,16 @@
     </g>
   </g>
 
+  <!-- foreground range -->
   <path d="M0,2440 L140,2100 L320,2320 L500,1980 L680,2280 L860,2040 L1000,2240 L1000,3080 L0,3080 Z" fill="url(#ink3)" filter="url(#brush)"/>
   <rect x="0" y="2360" width="1000" height="300" fill="url(#mist)" opacity="0.5" filter="url(#soft)"/>
 
+  <!-- foreground pines -->
   <use href="#pine" transform="translate(150 2490) scale(1.05)" opacity="0.46" filter="url(#brushFine)"/>
   <use href="#pine" transform="translate(232 2540) scale(0.82)" opacity="0.42" filter="url(#brushFine)"/>
 
+
+  <!-- valley water with boats -->
   <g stroke="#6e828f" stroke-width="4" fill="none" opacity="0.18" stroke-linecap="round" filter="url(#brushFine)">
     <path d="M120,3180 q60,-24 120,0 t120,0 t120,0"/>
     <path d="M540,3270 q60,-24 120,0 t120,0 t120,0"/>
